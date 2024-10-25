@@ -2,32 +2,58 @@ from elemento import Elemento
 from nodeb import NodeABB
 from arvorebb import ArvoreBB
 
+
+
 arvore = ArvoreBB()
 
+
+
+
 while True:
-    i = int(input('Digite a chave para o nó : '))
-    if i == -1:
+    print('Opções: \n 1-Criar/Adicionar nós a arvore. \n 2-Remover nó da arvore. \n 3- Procurar elemento na arvore. \n 4-Mostrar Arvore. \n 5-Mostrar maior e menor elemento da arvore. \n (-1 para sair)')
+    info = int(input('Digite um numero correspondente as opções: '))
+    if info ==-1:
         break
-    else:
-        e = Elemento(i)
-        n = NodeABB(e)
-        arvore.insertNode(n)
 
-    e = None
-    n = None
+    if info ==1:
+        print('Adicionando elementos a arvore!')
 
-print('arvore em ordem crescente: ')
-arvore.mostraArvore(arvore.getRaiz())
+        while True:
+            i = int(input('Digite a chave para o nó : '))
+            if i == -1:
+                break
+            else:
+                nome = input('Nome do nó: ')
+                e = Elemento(i, nome)
+                n = NodeABB(e)
+                arvore.insertNode(n)
 
-print('arvore em ordem decrescente: ')
-arvore.mostraDecrescente(arvore.getRaiz())
+            e = None
+            n = None
+    if info == 2:
+        
+        i = int(input('Chave do nó a ser removido: '))
+        if i != -1:
+            arvore.rmNode(arvore, arvore.getRaiz(), i)
 
-print('maior elemento: ')
-arvore.mostraMaior(arvore.getRaiz())
+    if info==3:
+        i = int(input('Digite o valor a ser buscado na arvore: '))
+        print('resultado da busca: ', arvore.encontraValorRec(arvore.getRaiz(), i))
+    
+    if info == 4:
+        print('arvore em ordem crescente: ')
+        arvore.mostraArvore(arvore.getRaiz())
 
-print('menor elemento: ')
-arvore.mostraMenor(arvore.getRaiz())
+        print('arvore em ordem decrescente: ')
+        arvore.mostraDecrescente(arvore.getRaiz())
 
-valor = int( input('valor a ser buscado: '))
-print('resultado da busca: ', arvore.encontraValor(arvore.getRaiz(), valor) )
-print('resultado da busca: ', arvore.encontraValorRec(arvore.getRaiz(), valor) )
+    if info ==5:
+        arvore.mostraMaior(arvore.getRaiz())
+        arvore.mostraMenor(arvore.getRaiz())
+    
+
+
+
+
+
+
