@@ -197,3 +197,4 @@ class ArvoreBB:
                     return self.getInfoByKey(atual , atual.getNodeLeft(), v)
                 
         print('Elemento fora da lista')
+    #RETORNAR NOS INTERNOS E NOS FOLHAS - EXERCICIO
