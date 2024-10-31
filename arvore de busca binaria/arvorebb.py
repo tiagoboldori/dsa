@@ -100,8 +100,20 @@ class ArvoreBB:
                 return self.encontraValorRec(n.getNodeLeft(), v)
         return False
     
-    #####################################################
+    ##################################
+    #RETORNA QUANTIDADE DE NOS
+    def contaNos(self, n):
+        if n!= None:
+            return 1+ self.contaNos(n.getNodeLeft()) + self.contaNos(n.getNodeRight())
+        return 0
 
+    #RETORNA SOMA DAS CHAVES
+    def contaChave(self , n):
+        if n != None:
+            return n.getChave() + self.contaChave(n.getNodeLeft()) + self.contaChave(n.getNodeRight())
+        return 0
+    
+    ################################
     #REMOVE NO DA ARVORE
 
     def rmNode(self, arvore, n, v):
@@ -185,5 +197,3 @@ class ArvoreBB:
                     return self.getInfoByKey(atual , atual.getNodeLeft(), v)
                 
         print('Elemento fora da lista')
-
-
