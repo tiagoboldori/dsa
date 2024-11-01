@@ -4,7 +4,7 @@ from arvorebb import ArvoreBB
 from random import randint
 
 
-a = [randint(1,40) for i in range(10)]
+a = [randint(1,30) for i in range(10)]
 
 arvore = ArvoreBB()
 for i in a:

@@ -205,10 +205,5 @@ class ArvoreBB:
                 
         print('Elemento fora da lista')
 
-    
-    def mostraNivel(self, n):
-        pass
 
-    def getCloser(self ,n):
-        pass
     #RETORNAR NOS INTERNOS E NOS FOLHAS - EXERCICIO

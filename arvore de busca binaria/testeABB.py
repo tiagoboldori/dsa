@@ -53,6 +53,9 @@ while True:
     
     if info == 7:
         print('soma das chaves: ', arvore.contaChave(arvore.getRaiz()))
+    
+    if info == 8:
+        print(arvore.mostraNivel(arvore.getRaiz()))
 
 
 #fim do while

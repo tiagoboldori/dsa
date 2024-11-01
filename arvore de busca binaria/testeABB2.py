@@ -17,7 +17,7 @@ aux = arvore.getInfoByKey(arvore.getRaiz(), arvore.getRaiz(), 16)
 
 arvore.mostraArvore(arvore.getRaiz())
 
-arvore.rmNode(arvore, arvore.getRaiz(), 17)
+arvore.rmNode(arvore, arvore.getRaiz(), 13)
 print('')
 
 print(arvore.getRaiz().getNodeRight().getChave())
