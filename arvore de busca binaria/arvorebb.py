@@ -61,13 +61,13 @@ class ArvoreBB:
             self.mostraMenor(n.getNodeLeft())
 
     def getMaior(self, n):
-        if n.getNodeRight() is None:
+        if n.getNodeRight() == None:
             return n
         else:
             self.getMaior(n.getNodeRight())
 
     def getMenor(self, n):
-        if n.getNodeLeft() is None:
+        if n.getNodeLeft() == None:
             return n
         else:
             self.getMenor(n.getNodeLeft())
@@ -148,9 +148,9 @@ class ArvoreBB:
 
             #CASO CONTRARIO:
             else:
-
-                aux = self.getInfoByKey(temp['node'], temp['node'].getNodeRight(), self.getMenor(temp['node']))
-
+                menorSuc = self.getMenor(temp['nodeRight'])
+                aux = self.getInfoByKey(temp['node'], temp['node'].getNodeRight(), menorSuc.getChave())
+        
                 if temp['node'] == temp['pai'].getNodeRight():
                     temp['pai'].setNodeRight(aux['node'])
                 else:
@@ -161,14 +161,21 @@ class ArvoreBB:
                 else:
                     aux['pai'].setNodeRight(None)
 
-                aux['node'].setNodeRight(temp['nodeRight'])
-                aux['node'].setNodeLeft(temp['nodeLeft'])
-                temp['node'].setNodeRight(None)
-                temp['node'].setNodeLeft(None)
+                if temp['nodeRight'] != aux['node']:
+
+                    aux['node'].setNodeRight(temp['nodeRight'])
+                    aux['node'].setNodeLeft(temp['nodeLeft'])
+                    temp['node'].setNodeRight(None)
+                    temp['node'].setNodeLeft(None)
+                else:
+                    aux['node'].setNodeRight(temp['nodeRight'].getNodeRight())
+                    aux['node'].setNodeLeft(temp['nodeLeft'])
+                    temp['node'].setNodeRight(None)
+                    temp['node'].setNodeLeft(None)
 
 
     def getInfoByKey(self, pai, atual, v):
-        if atual is not None:
+        if atual != None:
             if pai.getChave() == atual.getChave():
                 if v == atual.getChave():
                     return {
@@ -191,14 +198,17 @@ class ArvoreBB:
                         'pai': pai,
                         'node': atual
                     }
-                if v > atual.getChave():
+                elif v > atual.getChave():
                     return self.getInfoByKey(atual , atual.getNodeRight(), v)
-                if v < atual.getChave():
+                elif v < atual.getChave():
                     return self.getInfoByKey(atual , atual.getNodeLeft(), v)
                 
         print('Elemento fora da lista')
-<<<<<<< HEAD
+
+    
+    def mostraNivel(self, n):
+        pass
+
+    def getCloser(self ,n):
+        pass
     #RETORNAR NOS INTERNOS E NOS FOLHAS - EXERCICIO
-=======
-    #RETORNAR NOS INTERNOS E NOS FOLHAS - EXERCICIO
->>>>>>> 2ca133b0595410e80f892e5985e536c933126877

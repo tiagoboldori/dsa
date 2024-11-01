@@ -1,9 +1,19 @@
-
 from elemento import Elemento
 from nodeb import NodeABB
 from arvorebb import ArvoreBB
+from random import randint
+
+
+a = [randint(1,40) for i in range(10)]
 
 arvore = ArvoreBB()
+for i in a:
+    e = Elemento(int(i), str(i))
+    n = NodeABB(e)
+    arvore.insertNode(n)
+
+arvore.mostraArvore(arvore.getRaiz())
+
 
 while True:
     print('Opções: \n 1-Criar/Adicionar nós a arvore. \n 2-Remover nó da arvore. \n 3- Procurar elemento na arvore. \n 4-Mostrar Arvore. \n 5-Mostrar maior e menor elemento da arvore. \n 6-Mostrar numero de elementos na arvore \n 7-Mostrar soma das chaves da arvore \n (-1 para sair)')
@@ -53,6 +63,3 @@ while True:
     
     if info == 7:
         print('soma das chaves: ', arvore.contaChave(arvore.getRaiz()))
-
-
-#fim do while
