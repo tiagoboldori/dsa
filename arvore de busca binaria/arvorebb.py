@@ -107,7 +107,6 @@ class ArvoreBB:
         if not temp['root']:
             #CASO FOLHA
             if temp['node'].isFolha():
-
                 if temp['pai'].getNodeRight() == temp['node']:
 
                     temp['pai'].setNodeRight(None)
@@ -115,14 +114,11 @@ class ArvoreBB:
                     temp['pai'].setNodeLeft(None)
             #CASO APENAS FILHO DE UM LADO
             elif temp['node'].onlyLeftNode():
-
                 if temp['pai'].getNodeRight() == temp['node']:
                     temp['pai'].setNodeRight(temp['node'].getNodeLeft())
                 else:
                     temp['pai'].setNodeLeft(temp['node'].getNodeLeft())
-
             elif temp['node'].onlyRightNode():
-
                 if temp['pai'].getNodeRight() == temp['node']:
                     temp['pai'].setNodeRight(temp['node'].getNodeRight())
                 else:
@@ -137,14 +133,11 @@ class ArvoreBB:
                     temp['pai'].setNodeRight(aux['node'])
                 else:
                     temp['pai'].setNodeLeft(aux['node'])
-
                 if aux['pai'].getNodeLeft() == aux['node']:
                     aux['pai'].setNodeLeft(None)
                 else:
                     aux['pai'].setNodeRight(None)
-
                 if temp['nodeRight'] != aux['node']:
-
                     aux['node'].setNodeRight(temp['nodeRight'])
                     aux['node'].setNodeLeft(temp['nodeLeft'])
                     temp['node'].setNodeRight(None)
