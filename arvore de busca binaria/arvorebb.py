@@ -3,18 +3,21 @@ class ArvoreBB:
     def __init__(self):
         self.__raiz = None
 
-
     def getRaiz(self):
         return self.__raiz
     
     def setRaiz(self, node):
         self.__raiz = node
 
-
     def arvoreVazia(self):
         return self.getRaiz() == None
     
-
+    def insertNode(self, node):
+        if self.arvoreVazia():
+            self.setRaiz(node)
+        else:
+            self.insert(self.getRaiz(), node)
+    
     def insert(self, pai, node):
         if node.getChave() < pai.getChave():
             if pai.getNodeLeft()==None:
@@ -28,24 +31,11 @@ class ArvoreBB:
             else:
                 self.insert(pai.getNodeRight(), node)
 
-
-    def insertNode(self, node):
-        if self.arvoreVazia():
-            self.setRaiz(node)
-        else:
-            self.insert(self.getRaiz(), node)
-    
-
-
     def mostraArvore(self, n):
         if n != None:
             self.mostraArvore(n.getNodeLeft())
             print(n.getValores())
             self.mostraArvore(n.getNodeRight())
-    
-    
-    
-
 
     #EXERCICIOS
     def mostraMaior(self, n):
@@ -78,7 +68,6 @@ class ArvoreBB:
             print(n.getValores())
             self.mostraDecrescente(n.getNodeLeft())
     
-
     #ENCONTRAR VALOR V NA ARVORE
     def encontraValor(self, n, v):
         while n is not None:
@@ -99,8 +88,7 @@ class ArvoreBB:
             if v< n.getChave():
                 return self.encontraValorRec(n.getNodeLeft(), v)
         return False
-    
-    ##################################
+
     #RETORNA QUANTIDADE DE NOS
     def contaNos(self, n):
         if n!= None:
@@ -112,15 +100,10 @@ class ArvoreBB:
         if n != None:
             return n.getChave() + self.contaChave(n.getNodeLeft()) + self.contaChave(n.getNodeRight())
         return 0
-    
-    ################################
+
     #REMOVE NO DA ARVORE
-
     def rmNode(self, arvore, n, v):
-
         temp = self.getInfoByKey(n, n, v)
-        
-
         if not temp['root']:
             #CASO FOLHA
             if temp['node'].isFolha():
@@ -130,7 +113,6 @@ class ArvoreBB:
                     temp['pai'].setNodeRight(None)
                 else:
                     temp['pai'].setNodeLeft(None)
-
             #CASO APENAS FILHO DE UM LADO
             elif temp['node'].onlyLeftNode():
 
@@ -173,7 +155,6 @@ class ArvoreBB:
                     temp['node'].setNodeRight(None)
                     temp['node'].setNodeLeft(None)
 
-
     def getInfoByKey(self, pai, atual, v):
         if atual != None:
             if pai.getChave() == atual.getChave():
@@ -202,8 +183,5 @@ class ArvoreBB:
                     return self.getInfoByKey(atual , atual.getNodeRight(), v)
                 elif v < atual.getChave():
                     return self.getInfoByKey(atual , atual.getNodeLeft(), v)
-                
-        print('Elemento fora da lista')
-
-
+        return None
     #RETORNAR NOS INTERNOS E NOS FOLHAS - EXERCICIO
